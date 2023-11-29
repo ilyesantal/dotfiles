@@ -1,0 +1,2 @@
+0000000000000000000000000000000000000000 c8e600f39779c6d2ef75b40304b5391a541c41df AntIly00 <antily00@antily00wl01.omicron.at> 1700128416 +0100	fetch --depth=1 origin: storing head
+c8e600f39779c6d2ef75b40304b5391a541c41df 7e3fdf33ec53821e574b8d6df43bec7264c507ee AntIly00 <antily00@antily00wl01.omicron.at> 1701244468 +0100	pull --quiet --rebase origin master: fast-forward
