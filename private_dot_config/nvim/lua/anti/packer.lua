@@ -63,4 +63,19 @@ return require('packer').startup(function(use)
 			}
 		end
 	}
+	use 'mfussenegger/nvim-dap'
+	use 'mfussenegger/nvim-dap-python'
+	use {
+		'rmagatti/auto-session',
+		config = function()
+			require("auto-session").setup {
+				log_level = "error",
+				auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/"},
+			}
+		end
+	}
+	use {
+		'nvim-lualine/lualine.nvim',
+		requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+	}
 end)

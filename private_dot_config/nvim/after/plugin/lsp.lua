@@ -7,7 +7,7 @@ require('mason-lspconfig').setup({
 	  'clangd', 
 	  'pylsp', 
 	  -- 'bashls', 
-	  -- 'dockerls', 
+	  'dockerls', 
 	  -- 'rust_analyzer'
   },
   handlers = {

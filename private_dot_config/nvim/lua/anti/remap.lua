@@ -12,6 +12,7 @@ wk.register({
 		y = { [["+y]], "Yank to system clipboard (e.g. ap for paragraph" },
 		Y = { [["+Y]], "Yank line to system clipboard" },
 		d = { [["_d]], "Into void" },
+		f = { vim.lsp.buf.format, "Format buffer" },
 	},
 	["<C-d>"] = { "<C-d>zz", "Go down 1/2 page" },
 	["<C-u>"] = { "<C-u>zz", "Go up 1/2 page" },
@@ -46,8 +47,6 @@ wk.register({
 }, { mode = "i" })
 
 -- TERMINAL MODE
-
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
