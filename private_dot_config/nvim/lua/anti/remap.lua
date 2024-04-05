@@ -2,12 +2,18 @@ vim.g.mapleader = " "
 
 local wk = require("which-key")
 
--- NORMAL MODE
 wk.register({
+	-- NORMAL MODE
 	["<leader>"] = {
+		D = {
+			name = "Debugger",
+			r = { ":call vimspector#Reset()<CR>", "Reset vimspector" },
+			i = { "<Plug>VimspectorBalloonEval", "Vimspector popup" }
+		},
 		e = {
 			name = "Explore",
-			f = { vim.cmd.Ex, "Files" }
+			f = { vim.cmd.Ex, "Files" },
+			F = { ":RnvimrToggle<CR>", "Files" },
 		},
 		y = { [["+y]], "Yank to system clipboard (e.g. ap for paragraph" },
 		Y = { [["+Y]], "Yank line to system clipboard" },
@@ -20,6 +26,8 @@ wk.register({
 	n = { "nzzzv", "Go to next find" },
 	N = { "Nzzzv", "Go to previous find" },
 	Q = { "<nop>", "nop" },
+	["<C-j>"] = { function() vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR }) end, "Next error" },
+	["<C-k>"] = { function() vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR }) end, "Previous error" },
 	-- TODO -- not really working
 	["<C-f>"] = { "<cmd>silent !tmux neww tmux-sessionizer<CR>", "tmux-sessionizer" },
 }, { mode = "n" })
@@ -37,6 +45,7 @@ wk.register({
 -- VISUAL MODE
 wk.register({
 	["<leader>"] = {
+		Di = { "<Plug>VimspectorBalloonEval" },
 		p = { [["_dP]], "yank to void and paste" },
 	}
 }, { mode = "x" })
@@ -47,11 +56,14 @@ wk.register({
 }, { mode = "i" })
 
 -- TERMINAL MODE
+wk.register({}, { mode = "t"}
+)
 
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+
+-- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
+-- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
+-- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
+-- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
